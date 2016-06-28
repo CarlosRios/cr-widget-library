@@ -111,9 +111,6 @@ class CRWL_Random_Post_Message extends WP_Widget {
 			echo $args['before_title'] . $instance['title'] . $args['after_title'];
 		}
 
-		// Count the number of messages
-		$count = wp_count_posts( $instance['post_type'] );
-
 		// Setup the args for the query
 		$post_args = array(
 			'post_type'			=> $instance['post_type'],
