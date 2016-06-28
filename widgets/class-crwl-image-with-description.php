@@ -124,9 +124,7 @@ class CRWL_Image_With_Description extends WP_Widget {
 	 */
 	public function widget( $args, $instance )
 	{
-		extract( $args );
-
-		echo $before_widget; ?>
+		echo $args['before_widget']; ?>
 
 		<div class="crwl-image-w-description">
 
@@ -138,7 +136,7 @@ class CRWL_Image_With_Description extends WP_Widget {
 
 			// Display the title
 			if( isset( $instance['title'] ) && !empty( $instance['title'] ) ) {
-				echo $before_title . $instance['title'] . $after_title;
+				echo $args['before_title'] . $instance['title'] . $args['after_title'];
 			}
 
 			// Display the desc
@@ -150,7 +148,7 @@ class CRWL_Image_With_Description extends WP_Widget {
 		</div>
 
 		<?php
-		echo $after_widget;
+		echo $args['after_widget'];
 	}
 
 	/**

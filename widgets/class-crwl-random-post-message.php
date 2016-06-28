@@ -104,43 +104,40 @@ class CRWL_Random_Post_Message extends WP_Widget {
 	 * @return void
 	 */
 	public function widget( $args, $instance )
-	{
-		extract( $args );
-		
-		echo $before_widget;
+	{	
+		echo $args['before_widget'];
 
 		if( isset( $instance['title'] ) ) {
-			echo $before_title . $instance['title'] . $after_title;
+			echo $args['before_title'] . $instance['title'] . $args['after_title'];
 		}
 
 		// Count the number of messages
 		$count = wp_count_posts( $instance['post_type'] );
 
 		// Setup the args for the query
-		$args = array(
+		$post_args = array(
 			'post_type'			=> $instance['post_type'],
 			'posts_per_page'	=> $instance['count']
 		);
 
 		// Get the posts
-		$posts = new WP_Query( $args );
+		$posts = new WP_Query( $post_args );
 
 		// Loop through posts
-		while( $posts->have_posts() ){
+		while( $posts->have_posts() ) {
 			$posts->the_post();
 
 			// The title
 			echo sprintf( '<h4><a href="%2$s">%1$s</a></h4>', get_the_title(), get_the_permalink() );
 
 			the_content();
-
-		} // endwhile
+		}
 
 		// Reset the postdata
 		wp_reset_postdata();
 
 		// Echo the after widget stuff
-		echo $after_widget;
+		echo $args['after_widget'];
 	}
 
 }
