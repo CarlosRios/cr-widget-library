@@ -114,7 +114,8 @@ class CRWL_Random_Post_Message extends WP_Widget {
 		// Setup the args for the query
 		$post_args = array(
 			'post_type'			=> $instance['post_type'],
-			'posts_per_page'	=> $instance['count']
+			'posts_per_page'	=> $instance['count'],
+			'orderby'			=> 'rand'
 		);
 
 		// Get the posts
